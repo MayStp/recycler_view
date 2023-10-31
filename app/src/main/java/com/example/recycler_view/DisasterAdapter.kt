@@ -7,21 +7,25 @@ import com.example.recycler_view.databinding.ItemDisasterBinding
 
 typealias onClickDisaster = (Disaster) -> Unit
 
-class DisasterAdapter(private val listDisaster: List<Disaster>, private val
-    onClickDisaster: onClickDisaster):
-    RecyclerView.Adapter<DisasterAdapter.itemDisasterViewHolder>(){
+class DisasterAdapter(
+    private val listDisaster: List<Disaster>,
+    private val onClickDisaster: onClickDisaster
+    ): RecyclerView.Adapter<DisasterAdapter.itemDisasterViewHolder>(){
     inner class itemDisasterViewHolder (private val binding
         :ItemDisasterBinding):RecyclerView.ViewHolder(binding.root){
 
-            fun bind(data: Disaster){
-                with(binding){
-                    txtDisasterName.text = data.nameDisaster
-                    txtDisasterType.text = data.typeDisaster
-                    itemView.setOnClickListener{
-                        onClickDisaster(data)
-                    }
+        fun bind(data: Disaster) {
+            with(binding) {
+                txtDisasterName.setImageResource(data.imageResId)
+                txtDisasterType.text = data.typeDisaster
+                afiliasi.text = data.affiliate
+                wafat.text = data.wafat
+                itemView.setOnClickListener {
+                    onClickDisaster(data)
                 }
             }
+        }
+
     }
 
     override fun onCreateViewHolder(

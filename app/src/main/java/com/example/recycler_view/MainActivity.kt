@@ -13,34 +13,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val adapterDisaster = DisasterAdapter(generateDummy()){
             disaster -> Toast.makeText(this@MainActivity,
-            "You clicked on ${disaster.nameDisaster}",
+            "You clicked on ${disaster.typeDisaster}",
                 Toast.LENGTH_SHORT).show()}
 
             with(binding) {
-//                rvDisaster.apply {
-//                    adapter = adapterDisaster
-//                    layoutManager = LinearLayoutManager(this@MainActivity)
-//                }
                 rvDisaster.apply {
                     adapter = adapterDisaster
-                    layoutManager = GridLayoutManager(this@MainActivity, 2)
+                    layoutManager = LinearLayoutManager(this@MainActivity)
                 }
+//                rvDisaster.apply {
+//                    adapter = adapterDisaster
+//                    layoutManager = GridLayoutManager(this@MainActivity, 2)
+//                }
             }
         }
     }
 
     fun generateDummy(): List<Disaster> {
         return listOf(
-            Disaster(nameDisaster = "Tsunami", typeDisaster = "Natural"),
-            Disaster(nameDisaster = "Volcanic Eruption", typeDisaster = "Natural"),
-            Disaster(nameDisaster = "Earthquake", typeDisaster = "Natural"),
-            Disaster(nameDisaster = "Flood", typeDisaster = "Natural"),
-            Disaster(nameDisaster = "Fire", typeDisaster = "Natural"),
-            Disaster(nameDisaster = "Nuclear Accident", typeDisaster = "Man-made"),
-            Disaster(nameDisaster = "Terrorist Attack", typeDisaster = "Man-made"),
-            Disaster(nameDisaster = "War", typeDisaster = "Man-made")
+            Disaster(imageResId = R.drawable.musashi, typeDisaster = "Musashi", affiliate = "Miyamoto", wafat = "13 Juni 1645"),
+            Disaster(imageResId = R.drawable.hondatadakatsu, typeDisaster = "Honda Tadakatsu", affiliate = "Tokugawa", wafat = "3 Desember 1610" ),
+            Disaster(imageResId = R.drawable.odanobunaga, typeDisaster = "Oda Nobunaga", affiliate = "Oda", wafat = "21 Juni 1582"),
+            Disaster(imageResId = R.drawable.ieyasu_tokugawa, typeDisaster = "Ieyasu Tokugawa", affiliate = "Tokugawa", wafat = "1 Juni 1616"),
+            Disaster(imageResId = R.drawable.shingentakeda, typeDisaster = "Shingen Takeda", affiliate = "Takeda", wafat = "13 Mei 1573"),
+            Disaster(imageResId = R.drawable.chosokabe, typeDisaster = "Chosokabe Motochika", affiliate = "Chosokabe", wafat = "11 Juli 1599"),
+            Disaster(imageResId = R.drawable.motonari, typeDisaster = "Mori Motonari", affiliate = "Mori", wafat = "6 Juli 1571"),
         )
     }
 
